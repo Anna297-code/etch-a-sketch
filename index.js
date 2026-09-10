@@ -1,25 +1,18 @@
-const container = document.querySelector(".container")
+const container = document.querySelector(".container");
 
-function createDiv(){
-    const div = document.createElement("div");
-    div.classList.add("oneSquare");
-    return div;
-    
+
+function createGrid(width){
+    for(i=0; i < width ** 2; i++){
+        const square = document.createElement("div");
+        square.classList.add("oneSquare");
+        square.style.height = ` ${640/width}px`;
+        square.style.width = ` ${640/width}px`;
+        container.appendChild(square);
+
+
+    }
+
+
 }
 
-for(i=0; i<256; i++){
-    createDiv();
-    container.appendChild(createDiv());
-}
-
-// Makes the grid
-
-const allSquares = document.querySelectorAll(".oneSquare");
-allSquares.forEach((square)=>{
-    square.addEventListener("mouseenter", (event) => {
-        const hoveredDiv = event.target;
-        hoveredDiv.style.backgroundColor = "blue";
-
-    });
-});
-
+createGrid(4)
