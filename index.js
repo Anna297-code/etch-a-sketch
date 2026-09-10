@@ -1,12 +1,13 @@
 const container = document.querySelector(".container");
+const body = document.querySelector("body")
 
 
 function createGrid(width){
-    for(i=0; i < width ** 2; i++){
+    for(let i=0; i < width ** 2; i++){
         const square = document.createElement("div");
         square.classList.add("oneSquare");
-        square.style.height = ` ${640/width}px`;
-        square.style.width = ` ${640/width}px`;
+        square.style.height = `${640/width}px`;
+        square.style.width = `${640/width}px`;
         container.appendChild(square);
 
 
@@ -15,4 +16,23 @@ function createGrid(width){
 
 }
 
-createGrid(4)
+const button = document.createElement("button");
+button.textContent = "Restart";
+button.classList.add("button");
+body.prepend(button);
+
+button.addEventListener("click", () => {
+    let userInput = prompt("Input width of new grid:");
+    let number = Number(userInput);
+
+    if(number > 100){
+        alert("Number must be less than 100");
+    } else {
+         container.innerHTML = "";
+        createGrid(number);
+
+    }
+
+   
+}
+)
